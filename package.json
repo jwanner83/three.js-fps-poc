@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "rollup": "^2.54.0",
+    "@rollup/plugin-node-resolve": "^13.0.4"
+  },
+  "dependencies": {
+    "three": "^0.130.1"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch"
+  }
+}

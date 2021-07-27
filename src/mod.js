@@ -61,7 +61,7 @@ container.appendChild( stats.domElement );
 const GRAVITY = 30;
 
 const NUM_SPHERES = 20;
-const SPHERE_RADIUS = 0.2;
+const SPHERE_RADIUS = 0.05;
 
 const STEPS_PER_FRAME = 5;
 
@@ -141,7 +141,7 @@ document.addEventListener( 'click', () => {
     camera.getWorldDirection( playerDirection );
 
     sphere.collider.center.copy( playerCollider.end );
-    sphere.velocity.copy( playerDirection ).multiplyScalar( 30 );
+    sphere.velocity.copy( playerDirection ).multiplyScalar( 100 );
 
     sphereIdx = ( sphereIdx + 1 ) % spheres.length;
 
@@ -279,7 +279,7 @@ function getSideVector() {
 
 function controls( deltaTime ) {
 
-    const speed = 25;
+    const speed = 50;
 
     if ( playerOnFloor ) {
 
@@ -325,14 +325,14 @@ loader.load( 'collision-world.glb', ( gltf ) => {
 
     worldOctree.fromGraphNode( gltf.scene );
 
-    gltf.scene.traverse( child => {
+    gltf.scene.traverse(child => {
 
-        if ( child.isMesh ) {
+        if (child.isMesh) {
 
             child.castShadow = true;
             child.receiveShadow = true;
 
-            if ( child.material.map ) {
+            if (child.material.map) {
 
                 child.material.map.anisotropy = 8;
 
@@ -340,7 +340,7 @@ loader.load( 'collision-world.glb', ( gltf ) => {
 
         }
 
-    } );
+    });
 
     animate();
 
